@@ -153,7 +153,7 @@ jobs:
       - run:
           name: Run Playbook and Configure server
           command: |
-            cd .circleci/ansible
+            cd project/.circleci/ansible
             ansible-playbook -i inventory.txt configure-server.yml
       - destroy-environment
 
@@ -194,3 +194,5 @@ workflows:
           requires: [test-frontend, test-backend, scan-frontend, scan-backend]
       - configure-infrastructure:
           requires: [deploy-infrastructure]
+      # - run-migrations:
+      #     requires: [configure-infrastructure]
