@@ -133,7 +133,7 @@ jobs:
             aws cloudformation \
             list-exports --query "Exports[?Name==\`ID\`].Value" \
             --no-paginate --output text > ~/inventory.txt
-            cat ~/inventory.txt
+            ls
       - persist_to_workspace:
           root: ~/
           paths:
@@ -147,6 +147,8 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints: [7b:b1:e6:9d:48:86:5e:72:c6:07:40:a3:cd:9b:7f:2d]
+      - attach_workspace:
+          at: ~/
       - run:
           name: Install Ansible
           command: |
@@ -155,7 +157,7 @@ jobs:
           name: Run Playbook and Configure server
           command: |
             cd .circleci/ansible
-            cat inventory.txt
+            cat ~/project/.circleci/ansbile/inventory.txt
             ansible-playbook -i inventory.txt configure-server.yml
       - destroy-environment
 
