@@ -134,7 +134,7 @@ jobs:
           name: Add back-end ip to ansible inventory
           command: |
             aws cloudformation \
-            list-exports --query "Exports[?Name==\`PipelineID\`].Value" \
+            list-exports --query "Exports[?Name==\`BackendIP\`].Value" \
             --no-paginate --output text > ~/inventory.txt
       - run:
           name: cat inventory.txt

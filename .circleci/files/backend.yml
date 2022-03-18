@@ -35,7 +35,7 @@ Resources:
           Value: !Sub backend-${ID}
 
 Outputs:
-  PipelineID:
-    Value: !Sub ${ID}
+  BackendIP:
+    Value: !GetAtt EC2Instance.PublicIp
     Export:
-      Name: PipelineID
+      Name: BackendIP
