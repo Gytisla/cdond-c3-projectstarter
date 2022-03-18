@@ -37,5 +37,3 @@ Resources:
 Outputs:
   BackendIP:
     Value: !GetAtt EC2Instance.PublicIp
-    Export:
-      Name: BackendIP
