@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  aws-cli: circleci/aws-cli@2.0.3
+
 commands:
   destroy-environment:
     description: Destroy back-end and front-end cloudformation stacks given a workflow ID.
@@ -133,7 +136,7 @@ jobs:
             aws cloudformation \
             list-exports --query "Exports[?Name==\`ID\`].Value" \
             --no-paginate --output text > ~/inventory.txt
-            ls
+            ls ~/
       - persist_to_workspace:
           root: ~/
           paths:
@@ -157,6 +160,9 @@ jobs:
           name: Run Playbook and Configure server
           command: |
             cd .circleci/ansible
+            ls ~/
+            cat ~/inventory.txt
+            cat ~/.circleci/ansible/inventory.txt
             cat ~/project/.circleci/ansbile/inventory.txt
             ansible-playbook -i inventory.txt configure-server.yml
       - destroy-environment
