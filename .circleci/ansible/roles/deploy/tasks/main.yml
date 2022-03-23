@@ -14,6 +14,7 @@
 - name: Start pm2
   become: true
   shell: |
+    cd /home/ubuntu
     pm2 stop default
     pm2 start npm -- start
     cd dist
