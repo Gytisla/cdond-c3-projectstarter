@@ -189,17 +189,22 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Update packages
+          command: |
+            yum update -y
+      - run:
           name: Install python
           command: |
-            dnf install python3
+            yum install -y python3
       - run:
           name: Install node & npm
           command: |
-            dnf install nodejs
+            curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+            yum install nodejs
       - run:
           name: Install ansible
           command: |
-            dnf install ansible
+            yum install ansible
       - run:
           name: Get backend url
           command: |
