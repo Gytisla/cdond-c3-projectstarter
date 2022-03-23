@@ -7,7 +7,14 @@
     remote_src: no
     mode: 0755
 
+- name: ls
+  become: true
+  shell: |
+    ls /home/ubuntu
+    ls /home/ubuntu/artifact
+
 - name: Install npm packages
+  become: true
   npm:
     path: /home/ubuntu
 
