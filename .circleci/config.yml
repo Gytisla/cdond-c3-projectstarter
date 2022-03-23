@@ -191,15 +191,15 @@ jobs:
       - run:
           name: Install python
           command: |
-            sudo dnf install python3
+            dnf install python3
       - run:
           name: Install node & npm
           command: |
-            sudo dnf install nodejs
+            dnf install nodejs
       - run:
           name: Install ansible
           command: |
-            sudo dnf install ansible
+            dnf install ansible
       - run:
           name: Get backend url
           command: |
