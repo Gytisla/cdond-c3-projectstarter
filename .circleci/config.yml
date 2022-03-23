@@ -189,22 +189,17 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Update packages
-          command: |
-            sudo yum update -y
-      - run:
           name: Install python
           command: |
-            sudo yum install -y python3
+            sudo dnf install python3
       - run:
           name: Install node & npm
           command: |
-            curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
-            sudo yum install nodejs
+            sudo dnf install nodejs
       - run:
           name: Install ansible
           command: |
-            sudo yum install ansible
+            sudo dnf install ansible
       - run:
           name: Get backend url
           command: |
@@ -233,21 +228,21 @@ jobs:
 workflows:
   default:
     jobs:
-      - build-frontend
-      - build-backend
-      - test-frontend:
-          requires: [build-frontend]
-      - test-backend:
-          requires: [build-backend]
-      - scan-frontend:
-          requires: [build-frontend]
-      - scan-backend:
-          requires: [build-backend]
-      - deploy-infrastructure:
-          requires: [test-frontend, test-backend, scan-frontend, scan-backend]
-      - configure-infrastructure:
-          requires: [deploy-infrastructure]
-      - run-migrations:
-          requires: [configure-infrastructure]
-      - deploy-frontend:
-          requires: [run-migrations]
+      # - build-frontend
+      # - build-backend
+      # - test-frontend:
+      #     requires: [build-frontend]
+      # - test-backend:
+      #     requires: [build-backend]
+      # - scan-frontend:
+      #     requires: [build-frontend]
+      # - scan-backend:
+      #     requires: [build-backend]
+      # - deploy-infrastructure:
+      #     requires: [test-frontend, test-backend, scan-frontend, scan-backend]
+      # - configure-infrastructure:
+      #     requires: [deploy-infrastructure]
+      # - run-migrations:
+      #     requires: [configure-infrastructure]
+      - deploy-frontend
+          # requires: [run-migrations]
