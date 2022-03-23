@@ -197,9 +197,9 @@ jobs:
           command: |
             apk add --update ansible
       - run:
-        name: Install node & npm
-        command: |
-          apk add --update nodejs npm
+          name: Install node & npm
+          command: |
+            apk add --update nodejs npm
       - run:
           name: Get backend url
           command: |
