@@ -188,23 +188,27 @@ jobs:
       - image: amazon/aws-cli
     steps:
       - checkout
+      # - run:
+      #     name: Update packages
+      #     command: |
+      #       yum update -y
       - run:
-          name: Update packages
+          name: Install tar
           command: |
-            yum update -y
-      - run:
-          name: Install python
-          command: |
-            yum install -y python3
+            yum install -y tar
+      # - run:
+      #     name: Install python
+      #     command: |
+      #       yum install -y python3
       - run:
           name: Install node & npm
           command: |
             curl -sL https://rpm.nodesource.com/setup_14.x | bash -
-            yum install nodejs
-      - run:
-          name: Install ansible
-          command: |
-            yum install ansible
+            yum install -y nodejs
+      # - run:
+      #     name: Install ansible
+      #     command: |
+      #       yum -y install ansible
       - run:
           name: Get backend url
           command: |
