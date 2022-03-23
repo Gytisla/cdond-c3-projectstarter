@@ -189,17 +189,22 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install python
+          name: Update packages
           command: |
-            apk add --update python
+            sudo yum update -y
       - run:
-          name: Install Ansible
-          command: |
-            apk add --update ansible
+        name: Install python
+        command: |
+          sudo yum install -y python3
       - run:
           name: Install node & npm
           command: |
-            apk add --update nodejs npm
+            curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+            sudo yum install nodejs
+      - run:
+        name: Install ansible
+        command: |
+          sudo yum install ansible
       - run:
           name: Get backend url
           command: |
