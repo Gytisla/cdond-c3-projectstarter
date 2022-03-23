@@ -193,18 +193,18 @@ jobs:
           command: |
             sudo yum update -y
       - run:
-        name: Install python
-        command: |
-          sudo yum install -y python3
+          name: Install python
+          command: |
+            sudo yum install -y python3
       - run:
           name: Install node & npm
           command: |
             curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
             sudo yum install nodejs
       - run:
-        name: Install ansible
-        command: |
-          sudo yum install ansible
+          name: Install ansible
+          command: |
+            sudo yum install ansible
       - run:
           name: Get backend url
           command: |
