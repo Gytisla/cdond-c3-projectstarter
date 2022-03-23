@@ -11,7 +11,14 @@
   become: true
   shell: |
     cd /home/ubuntu
+    ls -la
     npm install
+
+- name: npm build
+  become: true
+  shell: |
+    cd /home/ubuntu
+    npm run build
 
 - name: Start pm2
   become: true
