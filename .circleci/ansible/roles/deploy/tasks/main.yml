@@ -7,17 +7,15 @@
     remote_src: no
     mode: 0755
 
-- name: Check and install npm
+- name: npm install
   become: true
-  command: npm install
-
-- name: Install npm packages
-  become: true
-  npm:
-    path: /home/ubuntu
+  shell: |
+    cd /home/ubuntu
+    npm install
 
 - name: Start pm2
   become: true
   shell: |
+    cd /home/ubuntu
     pm2 stop default
     pm2 start npm -- start
