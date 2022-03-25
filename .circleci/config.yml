@@ -147,8 +147,9 @@ jobs:
     steps:
       - checkout
       - run:
-          command: yum -y install tar gzip
-          return 1
+          command: |
+            yum -y install tar gzip
+            return 1
       - run:
           name: Ensure back-end infrastructure exists
           command: |
