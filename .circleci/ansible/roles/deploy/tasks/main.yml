@@ -9,13 +9,16 @@
   npm:
     path: /home/ubuntu
 
+- name: Prepare packages
+  become: true
+  shell: |
+    tar -xvzf artifact.tar.gz
+    npm run build
+
 - name: Start pm2
   become: true
   shell: |
-    cd /home/ubuntu/
-    tar -xvzf artifact.tar.gz
     pm2 stop default
-    npm run build
     pm2 start npm -- start
     cd dist
     pm2 start main.js --update-env
