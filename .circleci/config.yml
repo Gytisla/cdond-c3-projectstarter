@@ -218,7 +218,8 @@ jobs:
             then
               curl --insecure https://kvdb.io/3Db4ExznvjtUXnQLrVuPng/migration_${CIRCLE_WORKFLOW_ID:0:7} -d '1'
             fi
-      - destroy-environment # TODO: change to rollback migrations?
+      - destroy-environment
+      - revert-migrations
 
   deploy-frontend:
     docker:
@@ -256,7 +257,7 @@ jobs:
             tar -czvf artifact-"${CIRCLE_WORKFLOW_ID:0:7}".tar.gz dist
             aws s3 cp dist s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7} --recursive
       - destroy-environment
-      # todo: revert migrations
+      - revert-migrations
 
   deploy-backend:
     docker:
@@ -292,7 +293,7 @@ jobs:
             cat inventory.txt
             ansible-playbook -i inventory.txt deploy-backend.yml
       - destroy-environment
-      # todo: revert migrations
+      - revert-migrations
 
   smoke-test:
     docker:
