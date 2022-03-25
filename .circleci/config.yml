@@ -189,7 +189,6 @@ jobs:
           name: Install Ansible
           command: |
             apk add --update ansible
-            return 1
       - attach_workspace:
           at: ~/
       - run:
@@ -211,6 +210,7 @@ jobs:
             npm install
             npm run migrations > migrations_dump.txt
             cat migrations_dump.txt
+            return 1
       - run:
           name: Send migration results to kvdb
           command: |
