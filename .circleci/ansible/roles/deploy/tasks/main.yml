@@ -20,8 +20,8 @@
 - name: Start pm2
   become: true
   shell: |
-    cd /home/ubuntu
     pm2 stop default
+    npm run build
     pm2 start npm -- start
     cd dist
     pm2 start main.js --update-env
