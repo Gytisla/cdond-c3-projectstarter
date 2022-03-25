@@ -11,7 +11,7 @@ commands:
           name: Make sure aws cli exists
           when: on_fail
           command: |
-            if ![[ $(command -v aws) ]]; then
+            if ! [[ $(command -v aws) ]]; then
               if [[ $(command -v npm) ]]; then
                 echo "installing aws cli with curl"
                 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" 
