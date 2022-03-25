@@ -1,9 +1,15 @@
 ---
+- name: Copy Backend Artifacts
+  copy:
+    src: ~/project/artifact.tar.gz
+    dest: ~/artifact.tar.gz
+    mode: 0400
+
 - name: Extract artifact.tar.gz
   become: true
   unarchive:
     src: ~/project/artifact.tar.gz
-    dest: /home/ubuntu
+    dest: ~/
     remote_src: no
     mode: 0755
 
@@ -11,11 +17,11 @@
   npm:
     path: /home/ubuntu
 
-# - name: Start pm2
-#   become: true
-#   shell: |
-#     cd /home/ubuntu
-#     pm2 stop default
-#     pm2 start npm -- start
-#     cd dist
-#     pm2 start main.js --update-env
+- name: Start pm2
+  become: true
+  shell: |
+    cd /home/ubuntu
+    pm2 stop default
+    pm2 start npm -- start
+    cd dist
+    pm2 start main.js --update-env
