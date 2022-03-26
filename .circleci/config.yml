@@ -340,9 +340,9 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependencies
+          name: Install tar & gzip
           command: |
-            # your code here
+            yum install -y tar gzip
       - run:
           name: Update cloudfront distribution
           command: |
