@@ -305,6 +305,7 @@ jobs:
           name: Install dependencies
           command: |
             apk add --update curl
+            apk add --update npm
       - attach_workspace:
           at: ~/
       - run:
