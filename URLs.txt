@@ -1,6 +1,6 @@
 URL01: https://github.com/Gytisla/cdond-c3-projectstarter
-URL02: http://udapeople-da26d90.s3-website-us-east-1.amazonaws.com
+URL02: http://udapeople-7570a55.s3-website-us-east-1.amazonaws.com
 
-URL03: https://dtim6wjla00py.cloudfront.net
-URL04: http://ec2-44-201-183-79.compute-1.amazonaws.com:3030/api/status
-URL05: http://ec2-44-201-161-239.compute-1.amazonaws.com:9090/targets
+URL03: http://dkh5952qrlxf7.cloudfront.net/
+URL04: http://ec2-54-226-149-118.compute-1.amazonaws.com:3030/api/status
+URL05: http://ec2-44-202-96-235.compute-1.amazonaws.com:9090/targets
